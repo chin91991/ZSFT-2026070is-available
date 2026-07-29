@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<!-- 适配手机屏幕，防止移动端压缩 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF预览页面</title>
+<style>
+/* 清除页面所有边距，占满全屏 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+/* PDF容器铺满整个浏览器窗口 */
+embed{
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+</style>
+</head>
+<!-- 禁止右键保存PDF -->
+<body oncontextmenu="return false;">
+<!-- #toolbar=0隐藏顶部工具栏，view=Fit自动适配完整PDF页面 -->
+<embed src="./query.pdf#toolbar=0&navpanes=0&view=Fit" type="application/pdf">
+<p style="text-align:center;color:#666;font-size:13px;padding:8px 0;">
+    仅预览文档，无下载打印功能
+</p>
+</body>
+</html>
