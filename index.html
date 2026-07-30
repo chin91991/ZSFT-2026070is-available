@@ -1,75 +1,48 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0"/>
-<title>不动产查询证明</title>
-<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>孝感市不动产登记情况查询证明</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#f3f3f3;padding:10px 0;}
-#pdfBox{width:100%;}
-canvas{
-    display:block;
-    margin:12px auto;
-    max-width:94%;
-    background:#fff;
-    box-shadow:0 2px 10px #ccc;
-}
-.load-text{
-    text-align:center;
-    padding:40px 20px;
-    font-size:16px;
-    color:#333;
-}
-.error-tip{
-    color:red;
-    text-align:center;
-    padding:40px 15px;
-    font-size:15px;
-}
+body{padding:16px;line-height:1.7;font-size:15px;background:#fff;}
+.title{font-size:20px;font-weight:bold;text-align:center;margin-bottom:20px;}
+.info{margin:8px 0;}
+table{width:100%;border-collapse:collapse;margin:16px 0;}
+td{border:1px solid #222;padding:10px;vertical-align:top;}
+.rule{margin:10px 0;text-indent:2em;}
+.time{margin-top:15px;}
+.page{text-align:right;margin-top:30px;}
 </style>
 </head>
 <body oncontextmenu="return false;">
-<div id="pdfBox">
-    <div class="load-text">文档加载中，请稍候...</div>
-</div>
+<div class="title">孝感市不动产登记情况查询证明</div>
+<div class="info">经查询不动产登记信息平台，结果如下：</div>
+<div class="info">查档编号：CXXG202606270051</div>
 
-<script>
-// 你的PDF文件名固定为 query.pdf
-const pdfPath = "query.pdf";
-const container = document.getElementById("pdfBox");
+<table>
+  <tr>
+    <td width="120">申请人员</td>
+    <td>姓名：胡婷 叶进辉 叶康辰 ***<br>证件号：42220119890207322X 422201198810285911 420902201309225998 ***</td>
+  </tr>
+  <tr>
+    <td>不动产登记信息查询记录</td>
+    <td>没有查询到相关记录 ***</td>
+  </tr>
+  <tr>
+    <td>备注</td>
+    <td>本查询证明范围包括：孝感市、孝南区、高新区、临空区和双峰山旅游度假区 ***</td>
+  </tr>
+</table>
 
-// 引入PDF解析工具
-const pdfjsLib = window['pdfjs-dist/build/pdf'];
-pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.worker.min.js";
+<div class="rule">1、本记录查询不动产登记数据库中的不动产登记信息，本次查询结果与不动产登记簿记载内容不一致的，以不动产登记簿记载内容为准。</div>
+<div class="rule">2、申请人请核实以上身份信息和查询结果信息，如有隐瞒不报或提供虚假信息的，需自行承担法律责任。</div>
+<div class="rule">3、本查询结果可通过扫描不动产登记信息查询证明上的二维码来进行信息验证。</div>
+<div class="rule">4、申请人对以上查询中涉及国家秘密、个人隐私和商业秘密的信息负有保密义务，不得泄漏给他人，也不得用于不正当使用。若因个人原因造成信息泄漏而导致的不良后果由个人承担，与不动产登记中心无关。</div>
+<div class="rule">5、本查询结果仅限身份信息完成的不动产登记数据范围。</div>
 
-// 渲染PDF
-(async function renderPDF() {
-    try {
-        const pdfDoc = await pdfjsLib.getDocument(pdfPath).promise;
-        container.innerHTML = "";
-        // 手机适配缩放比例
-        const scaleVal = window.innerWidth < 700 ? 0.93 : 1.2;
-
-        // 循环渲染所有页面（你这份只有1页）
-        for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-            const page = await pdfDoc.getPage(pageNum);
-            const viewport = page.getViewport({ scale: scaleVal });
-            const canvas = document.createElement("canvas");
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
-            container.appendChild(canvas);
-            await page.render({
-                canvasContext: canvas.getContext("2d"),
-                viewport: viewport
-            }).promise;
-        }
-    } catch (err) {
-        container.innerHTML = `<div class="error-tip">加载失败<br>1.确认仓库存在query.pdf<br>2.等待页面部署完成3-5分钟<br>3.强制刷新页面重试</div>`;
-        console.log(err);
-    }
-})();
-</script>
+<div class="time">查询时间：2026 年06 月27 日15 时26 分40 秒</div>
+<div class="page">第1 页共1 页</div>
 </body>
 </html>
